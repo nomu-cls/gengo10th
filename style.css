@@ -297,6 +297,11 @@ a {
   animation: fadeInUp .8s .15s ease both;
 }
 
+.hero__headline--compact {
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  line-height: 1.8;
+}
+
 .hero__headline em {
   font-style: normal;
   color: var(--c-gold-light);
