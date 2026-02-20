@@ -184,7 +184,7 @@ a {
   border: 1px solid var(--c-border-light);
   border-radius: 10px;
   background: #f8f9fa;
-  color: var(--c-text-on-light);
+  color: #1a1a2e;
   font-size: 1.05rem;
   font-family: var(--ff-sans);
   text-align: center;
@@ -198,7 +198,7 @@ a {
 }
 
 .hero-form__input::placeholder {
-  color: #999;
+  color: #888;
 }
 
 .hero-form .btn {
@@ -1796,7 +1796,7 @@ a {
   border: 1px solid var(--c-border-light);
   border-radius: 10px;
   background: #f8f9fa;
-  color: var(--c-text-on-light);
+  color: #1a1a2e;
   font-size: 1.05rem;
   font-family: var(--ff-sans);
   transition: var(--transition);
@@ -1809,7 +1809,7 @@ a {
 }
 
 .optin-form__input::placeholder {
-  color: rgba(255, 255, 255, .4);
+  color: #888;
 }
 
 .optin-form .btn {
