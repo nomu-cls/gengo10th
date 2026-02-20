@@ -890,11 +890,22 @@ a {
   color: var(--c-gold);
 }
 
-.stat-block--large {
+.stat-block__number.accent-blue {
+  color: #729bce;
+  /* blue to match pie chart 85% */
+}
+
+.stat-block--gold {
   border-color: var(--c-border-gold);
-  margin-bottom: 48px;
   background: linear-gradient(135deg, rgba(212, 173, 90, .06) 0%, var(--c-glass-dark) 100%);
   box-shadow: var(--shadow-gold);
+}
+
+.stat-block--large {
+  border-color: rgba(114, 155, 206, 0.3);
+  margin-bottom: 48px;
+  background: linear-gradient(135deg, rgba(114, 155, 206, .08) 0%, var(--c-glass-dark) 100%);
+  box-shadow: 0 4px 20px rgba(114, 155, 206, 0.1);
 }
 
 .stat-block__text {
