@@ -244,12 +244,12 @@
    ======================================== */
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: auto;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 24px;
+      padding: 48px 24px;
       background:
         radial-gradient(ellipse at 30% 20%, rgba(42, 61, 122, .4) 0%, transparent 50%),
         radial-gradient(ellipse at 70% 80%, rgba(212, 173, 90, .06) 0%, transparent 40%),
@@ -1993,8 +1993,8 @@
       }
 
       .hero {
-        padding: 60px 16px;
-        min-height: 90vh;
+        padding: 36px 16px;
+        min-height: auto;
       }
 
       .container {
@@ -2174,20 +2174,20 @@
   </header>
 
   <script>
-  // LP variation switching via URL parameter
-  document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    const lpNum = params.get("lp") || "1";
-    const variants = document.querySelectorAll(".hero-variant");
-    let found = false;
-    variants.forEach(v => {
-      if (v.dataset.lp === lpNum) { v.style.display = ""; found = true; }
-      else { v.style.display = "none"; }
+    // LP variation switching via URL parameter
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const lpNum = params.get("lp") || "1";
+      const variants = document.querySelectorAll(".hero-variant");
+      let found = false;
+      variants.forEach(v => {
+        if (v.dataset.lp === lpNum) { v.style.display = ""; found = true; }
+        else { v.style.display = "none"; }
+      });
+      if (!found) {
+        variants.forEach(v => { v.style.display = v.dataset.lp === "1" ? "" : "none"; });
+      }
     });
-    if (!found) {
-      variants.forEach(v => { v.style.display = v.dataset.lp === "1" ? "" : "none"; });
-    }
-  });
   </script>
   <!-- HM TAG -->
   <script type="text/javascript">
