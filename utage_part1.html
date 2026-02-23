@@ -28,15 +28,7 @@
   <!-- HM TAG -->
   <!-- Hide all LP variants by default to prevent flash before JS variant switch -->
   <style>
-    /* === Reset & Variables === */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    /* === Variables (safe — only custom properties) === */
     :root {
       --c-navy-deep: #0b0f1e;
       --c-navy: #101832;
@@ -66,27 +58,24 @@
       --transition: .3s cubic-bezier(.4, 0, .2, 1);
     }
 
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
+    /* Scoped reset — only inside .hero */
+    .hero *,
+    .hero *::before,
+    .hero *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    body {
-      font-family: var(--ff-sans);
-      background: var(--c-white);
-      color: var(--c-text-on-light);
-      line-height: 1.9;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    img {
+    .hero img {
       max-width: 100%;
       display: block;
     }
 
     /* === Hero === */
     .hero {
+      font-family: var(--ff-sans);
+      line-height: 1.9;
       position: relative;
       min-height: 100vh;
       display: flex;
