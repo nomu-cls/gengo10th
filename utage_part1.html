@@ -28,8 +28,256 @@
   <!-- HM TAG -->
   <!-- Hide all LP variants by default to prevent flash before JS variant switch -->
   <style>
+    /* === Reset & Variables === */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --c-navy-deep: #0b0f1e;
+      --c-navy: #101832;
+      --c-navy-light: #1a2548;
+      --c-navy-glow: rgba(42, 61, 122, .2);
+      --c-white: #ffffff;
+      --c-off-white: #f8f7f3;
+      --c-warm: #f3f1eb;
+      --c-glass-dark: rgba(16, 24, 50, .65);
+      --c-glass-light: rgba(255, 255, 255, .85);
+      --c-border-dark: rgba(100, 130, 220, .15);
+      --c-border-light: rgba(26, 37, 72, .08);
+      --c-border-gold: rgba(212, 173, 90, .3);
+      --c-text-on-dark: #e4e7f0;
+      --c-text-dim-dark: #a8afc8;
+      --c-text-on-light: #2c2c2c;
+      --c-text-dim-light: #3a3a4a;
+      --c-text-light: #999;
+      --c-gold: #d4ad5a;
+      --c-gold-light: #e8c97a;
+      --c-gold-dark: #b8923c;
+      --c-gold-glow: rgba(212, 173, 90, .2);
+      --c-gradient-gold: linear-gradient(135deg, #e8c97a 0%, #d4ad5a 40%, #b8923c 100%);
+      --ff-sans: 'Noto Sans JP', sans-serif;
+      --ff-serif: 'Noto Serif JP', serif;
+      --r: 14px;
+      --transition: .3s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--ff-sans);
+      background: var(--c-white);
+      color: var(--c-text-on-light);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* === Hero === */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(42, 61, 122, .4) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(212, 173, 90, .06) 0%, transparent 40%),
+        linear-gradient(180deg, var(--c-navy) 0%, var(--c-navy-deep) 100%);
+      color: var(--c-text-on-dark);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(42, 61, 122, .08) 0%, transparent 50%);
+      animation: heroOrb 20s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes heroOrb {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(5%, 3%);
+      }
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero__eyecatch {
+      display: inline-block;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      color: var(--c-gold);
+      border: 1px solid var(--c-border-gold);
+      padding: 10px 28px;
+      border-radius: 60px;
+      margin-bottom: 36px;
+      background: rgba(212, 173, 90, .05);
+      animation: fadeInUp .8s ease both;
+    }
+
+    .hero__headline {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.7rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      color: #fff;
+      animation: fadeInUp .8s .15s ease both;
+    }
+
+    .hero__headline--compact {
+      font-size: clamp(1rem, 2.8vw, 1.4rem);
+      line-height: 1.8;
+    }
+
+    .hero__headline em {
+      font-style: normal;
+      color: var(--c-gold-light);
+    }
+
+    .hero__sub {
+      font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+      color: var(--c-text-on-dark);
+      line-height: 2;
+      margin-bottom: 16px;
+      animation: fadeInUp .8s .3s ease both;
+    }
+
+    .hero__sub strong {
+      color: #fff;
+    }
+
+    .hero__sub .accent {
+      color: var(--c-gold) !important;
+    }
+
+    .hero__sub-desc {
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      color: var(--c-text-dim-dark);
+      line-height: 1.9;
+      margin-bottom: 12px;
+      animation: fadeInUp .8s .35s ease both;
+    }
+
+    .hero__sub-desc strong {
+      color: #fff;
+    }
+
+    .hero__sub-desc .accent {
+      color: var(--c-gold) !important;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .hero__main-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--c-gold);
+      margin-top: 24px;
+      line-height: 1.4;
+      letter-spacing: .04em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    }
+
+    .profile__role {
+      font-size: .95rem;
+      color: var(--c-text-dim-dark);
+      margin-top: 8px;
+    }
+
+    /* === LP Variants — hidden by default to prevent flash === */
     .hero-variant {
       display: none;
+      animation: fadeInUp .8s .15s ease both;
+    }
+
+    /* LP2 */
+    .hero-variant[data-lp="2"] .hero__headline {
+      font-size: clamp(1.2rem, 3.2vw, 1.8rem);
+      line-height: 1.6;
+    }
+
+    /* LP5 */
+    .hero-variant[data-lp="5"] .hero__headline {
+      font-size: clamp(1rem, 2.8vw, 1.5rem);
+      line-height: 1.6;
+    }
+
+    /* LP6 */
+    .hero-variant[data-lp="6"] .hero__headline {
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      line-height: 1.5;
+    }
+
+    .hero-variant[data-lp="6"] .hero__sub {
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      line-height: 2;
+    }
+
+    .hero-variant[data-lp="6"] .hero__sub-desc {
+      font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+      line-height: 1.9;
+    }
+
+    .hero-variant[data-lp="6"] .hero__sub-desc .accent {
+      font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+    }
+
+    .hero-variant[data-lp="6"] .hero__main-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+    }
+
+    /* LP7 */
+    .hero-variant[data-lp="7"] .hero__sub {
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      line-height: 2;
+    }
+
+    .hero-variant[data-lp="7"] .hero__sub-desc {
+      font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+      line-height: 1.9;
+    }
+
+    /* === Animation === */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
