@@ -2867,7 +2867,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- Form submit with redirect ---
-  const REDIRECT_URL = 'https://gengogaku.kotakahito-sejutsukagengogaku.com/p/ImfWxYiSIAJ9';
+  const REDIRECTS = {
+    ad: 'https://gengogaku.kotakahito-sejutsukagengogaku.com/p/ImfWxYiSIAJ9',
+    house: 'https://gengogaku.kotakahito-sejutsukagengogaku.com/p/3zGygnVFXjyn'
+  };
+  const pageType = params.get('type') || 'ad';
+  const REDIRECT_URL = REDIRECTS[pageType] || REDIRECTS.ad;
 
   document.querySelectorAll('form[action*="tkal.analogialemma"]').forEach(form => {
     form.addEventListener('submit', (e) => {
