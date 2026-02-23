@@ -298,7 +298,7 @@ a {
 }
 
 .hero__headline--compact {
-  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-size: clamp(1rem, 2.8vw, 1.4rem);
   line-height: 1.8;
 }
 
@@ -367,10 +367,11 @@ a {
 /* Hero main title — large serif */
 .hero__main-title {
   font-family: var(--ff-serif);
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 700;
   color: var(--c-gold);
-  margin-top: 16px;
+  margin-top: 24px;
+  line-height: 1.4;
   letter-spacing: .04em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, .3);
 }
@@ -378,6 +379,41 @@ a {
 /* Hero LP variants */
 .hero-variant {
   animation: fadeInUp .8s .15s ease both;
+}
+
+/* LP6 — headline smaller, bottom text larger */
+.hero-variant[data-lp="6"] .hero__headline {
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  line-height: 1.5;
+}
+
+.hero-variant[data-lp="6"] .hero__sub {
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  line-height: 2;
+}
+
+.hero-variant[data-lp="6"] .hero__sub-desc {
+  font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+  line-height: 1.9;
+}
+
+.hero-variant[data-lp="6"] .hero__sub-desc .accent {
+  font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+}
+
+.hero-variant[data-lp="6"] .hero__main-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+
+/* LP7 — compact headline smaller, sub text larger */
+.hero-variant[data-lp="7"] .hero__sub {
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  line-height: 2;
+}
+
+.hero-variant[data-lp="7"] .hero__sub-desc {
+  font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+  line-height: 1.9;
 }
 
 /* ========================================
@@ -1008,7 +1044,7 @@ a {
 
 .insight-message p {
   margin-bottom: 24px;
-  color: var(--c-text-dim-dark);
+  color: #d0d5e8;
   line-height: 2;
   font-size: 1.05rem;
 }
