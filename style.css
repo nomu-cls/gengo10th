@@ -1621,6 +1621,115 @@ a {
 }
 
 /* ========================================
+   #bonuses — Bonus Cards
+   ======================================== */
+.bonus-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.bonus-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background: var(--c-off-white);
+  border: 1px solid var(--c-border-light);
+  border-radius: var(--r);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+.bonus-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
+}
+
+.bonus-card--special {
+  border: 2px solid var(--c-gold);
+  background: linear-gradient(135deg, rgba(212, 173, 90, .06) 0%, var(--c-off-white) 100%);
+  box-shadow: var(--shadow-gold);
+}
+
+.bonus-card__img {
+  width: 240px;
+  min-width: 240px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+}
+
+.bonus-card__body {
+  flex: 1;
+}
+
+.bonus-card__badge {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 900;
+  color: var(--c-gold-dark);
+  background: rgba(212, 173, 90, .12);
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: .06em;
+}
+
+.bonus-card__badge--gold {
+  background: var(--c-gradient-gold);
+  color: var(--c-navy-deep);
+}
+
+.bonus-card__body h3 {
+  font-family: var(--ff-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--c-navy-deep);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.bonus-card__body p {
+  font-size: .95rem;
+  color: var(--c-text-dim-light);
+  line-height: 1.85;
+  margin-bottom: 8px;
+}
+
+.bonus-card__note {
+  font-size: .82rem !important;
+  color: var(--c-text-light) !important;
+  margin-top: 4px;
+}
+
+.bonus-live-message {
+  text-align: center;
+  font-family: var(--ff-serif);
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: var(--c-gold-dark);
+  background: rgba(212, 173, 90, .08);
+  border: 1px solid var(--c-border-gold);
+  border-radius: var(--r);
+  padding: 24px 32px;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .bonus-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bonus-card__img {
+    width: 100%;
+    min-width: auto;
+    max-width: 360px;
+  }
+}
+
+/* ========================================
    #message — WARM (message)
    ======================================== */
 .message-box {
