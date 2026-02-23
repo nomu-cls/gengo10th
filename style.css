@@ -376,8 +376,9 @@ a {
   text-shadow: 0 2px 8px rgba(0, 0, 0, .3);
 }
 
-/* Hero LP variants */
+/* Hero LP variants — hidden by default to prevent flash before JS variant switch */
 .hero-variant {
+  display: none;
   animation: fadeInUp .8s .15s ease both;
 }
 

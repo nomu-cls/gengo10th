@@ -26,6 +26,12 @@
   <script type="module">
     import haihaiInquiryPopupClient from 'https://form-gw.hm-f.jp/js/haihai.inquiry_popup.client.js'; haihaiInquiryPopupClient.create({ baseUrl: "https://form-gw.hm-f.jp", commonTagCode: "c2da09e904171e5aeb0d8475d3fc8094" });</script>
   <!-- HM TAG -->
+  <!-- Hide all LP variants by default to prevent flash before JS variant switch -->
+  <style>
+    .hero-variant {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
