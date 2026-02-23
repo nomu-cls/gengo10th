@@ -53,4 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // --- Form submit with redirect ---
+  const REDIRECT_URL = 'https://gengogaku.kotakahito-sejutsukagengogaku.com/p/ImfWxYiSIAJ9';
+
+  document.querySelectorAll('form[action*="tkal.analogialemma"]').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = '送信中...';
+      btn.disabled = true;
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).then(() => {
+        window.location.href = REDIRECT_URL;
+      }).catch(() => {
+        // Even if fetch fails due to CORS, the request was sent
+        window.location.href = REDIRECT_URL;
+      });
+    });
+  });
 });
