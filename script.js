@@ -61,8 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   const pageType = params.get('type') || 'ad';
   const REDIRECT_URL = REDIRECTS[pageType] || REDIRECTS.ad;
+  const ftid = params.get('ftid') || '';
 
   document.querySelectorAll('form[action*="tkal.analogialemma"]').forEach(form => {
+    // Inject ftid as hidden field if present
+    if (ftid) {
+      const hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = 'ftid';
+      hidden.value = ftid;
+      form.appendChild(hidden);
+    }
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
@@ -72,15 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const formData = new FormData(form);
 
+      // Build redirect URL with ftid
+      let redirectUrl = REDIRECT_URL;
+      if (ftid) {
+        const sep = redirectUrl.includes('?') ? '&' : '?';
+        redirectUrl += sep + 'ftid=' + encodeURIComponent(ftid);
+      }
+
       fetch(form.action, {
         method: 'POST',
         body: formData,
         mode: 'no-cors'
       }).then(() => {
-        window.location.href = REDIRECT_URL;
+        window.location.href = redirectUrl;
       }).catch(() => {
         // Even if fetch fails due to CORS, the request was sent
-        window.location.href = REDIRECT_URL;
+        window.location.href = redirectUrl;
       });
     });
   });
